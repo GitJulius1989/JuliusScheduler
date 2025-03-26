@@ -1,0 +1,11 @@
+C:\Users\juliodl\Documents\ProyectosPracticasJulio\JuliusScheduler\JuliusScheduler.Core\bin\Debug\net9.0\JuliusScheduler.Core.deps.json
+C:\Users\juliodl\Documents\ProyectosPracticasJulio\JuliusScheduler\JuliusScheduler.Core\bin\Debug\net9.0\JuliusScheduler.Core.dll
+C:\Users\juliodl\Documents\ProyectosPracticasJulio\JuliusScheduler\JuliusScheduler.Core\bin\Debug\net9.0\JuliusScheduler.Core.pdb
+C:\Users\juliodl\Documents\ProyectosPracticasJulio\JuliusScheduler\JuliusScheduler.Core\obj\Debug\net9.0\JuliusScheduler.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\juliodl\Documents\ProyectosPracticasJulio\JuliusScheduler\JuliusScheduler.Core\obj\Debug\net9.0\JuliusScheduler.Core.AssemblyInfoInputs.cache
+C:\Users\juliodl\Documents\ProyectosPracticasJulio\JuliusScheduler\JuliusScheduler.Core\obj\Debug\net9.0\JuliusScheduler.Core.AssemblyInfo.cs
+C:\Users\juliodl\Documents\ProyectosPracticasJulio\JuliusScheduler\JuliusScheduler.Core\obj\Debug\net9.0\JuliusScheduler.Core.csproj.CoreCompileInputs.cache
+C:\Users\juliodl\Documents\ProyectosPracticasJulio\JuliusScheduler\JuliusScheduler.Core\obj\Debug\net9.0\JuliusScheduler.Core.dll
+C:\Users\juliodl\Documents\ProyectosPracticasJulio\JuliusScheduler\JuliusScheduler.Core\obj\Debug\net9.0\refint\JuliusScheduler.Core.dll
+C:\Users\juliodl\Documents\ProyectosPracticasJulio\JuliusScheduler\JuliusScheduler.Core\obj\Debug\net9.0\JuliusScheduler.Core.pdb
+C:\Users\juliodl\Documents\ProyectosPracticasJulio\JuliusScheduler\JuliusScheduler.Core\obj\Debug\net9.0\ref\JuliusScheduler.Core.dll

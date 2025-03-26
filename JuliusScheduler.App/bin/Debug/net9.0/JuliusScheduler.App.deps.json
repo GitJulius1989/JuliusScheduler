@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "JuliusScheduler.App/1.0.0": {
+        "dependencies": {
+          "JuliusScheduler.Core": "1.0.0"
+        },
+        "runtime": {
+          "JuliusScheduler.App.dll": {}
+        }
+      },
+      "JuliusScheduler.Core/1.0.0": {
+        "runtime": {
+          "JuliusScheduler.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "JuliusScheduler.App/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "JuliusScheduler.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
