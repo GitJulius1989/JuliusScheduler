@@ -1,0 +1,37 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build outputs
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+
+# Test results
+TestResults/
+*.sourcelink.json
+*.csproj.FileListAbsolute.txt
+*.GeneratedMSBuildEditorConfig.editorconfig
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+
+# Rider
+.idea/
+
+# Mac
+.DS_Store
+
+# Others
+*.swp
+*.bak
+*.tmp
