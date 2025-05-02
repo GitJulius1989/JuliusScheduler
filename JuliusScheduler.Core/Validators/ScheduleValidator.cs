@@ -1,54 +1,82 @@
-using JuliusScheduler.Core.Enums;
+using System;
+using JuliusScheduler.Domain.Enums;
+using JuliusScheduler.Core.Strings;
+using JuliusScheduler.Domain.Entities;
+using JuliusScheduler.Core.Interfaces;
 
-namespace JuliusScheduler.Core;
-
-
-
-public static class ScheduleValidator 
+namespace JuliusScheduler.Core.Validators
 {
-    // Método que valida el rango de fechas
-    public static bool IsDateRangeValid(DateTime startDate, DateTime endDate, ScheduleType type, out string errorMessage)
+    public class ScheduleValidator : IScheduleValidator
     {
-        errorMessage = string.Empty;
-
-        // Si la fecha de inicio es anterior a hoy, no vale
-        if (startDate.Date < DateTime.Today)
+        public bool Validate(ScheduleLimits limits, ScheduleConfig config, DateTimeOffset now, out string errorMessage)
         {
-            errorMessage = "StartDate can't be earlier than today";
-            return false;
+            //Date range
+            if (!IsDateRangeValid(limits, config, now, out errorMessage))
+            {
+                return false;
+            }
+
+            // If its once, check if the nextdate is in the past
+            if (config.ScheduleType == ScheduleType.Once)
+            {
+                var execTime = config.ExecutionTime.TimeOfDay;
+                var nextDate = new DateTimeOffset(limits.StartDate.Date + execTime, now.Offset);
+
+                if (!IsNextExecTimeOK(nextDate))
+                {
+                    errorMessage = ErrorMessages.InvalidExecutionTime;
+                    return false;
+                }
+            }
+            errorMessage = string.Empty;
+            return true;
         }
 
-        // Si la fecha de fin también es pasada, tampoco nos vale
-        if (endDate.Date < DateTime.Today)
+        // Método que valida el rango de fechas
+        public static bool IsDateRangeValid(ScheduleLimits limits, ScheduleConfig config, DateTimeOffset now, out string errorMessage)
         {
-            errorMessage = "EndDate can't be earlier than today";
-            return false;
+            errorMessage = string.Empty;
+
+            var start = limits.StartDate.Date;
+            var end = limits.EndDate.Date;
+
+            // Si la fecha de inicio es anterior a hoy, no vale 
+            if (start < DateTime.Today)
+            {
+                errorMessage = ErrorMessages.StartDateBeforeToday;
+                return false;
+            }
+
+            // Si la fecha de fin es pasada, tampoco nos vale
+            if (end < DateTime.Today)
+            {
+                errorMessage = ErrorMessages.EndDateBeforeToday;
+                return false;
+            }
+
+            // Si la fecha final es anterior a la de inicio, inviable.
+            if (end < start)
+            {
+                errorMessage = ErrorMessages.StartDateAfterEndDate;
+                return false;
+            }
+
+            // Si las fechas coinciden, solo es válido si se trata de una única ejecución (Once)
+            if (start == end && config.ScheduleType == ScheduleType.Recurring)
+            {
+                errorMessage = ErrorMessages.SameDateOnce;
+                return false;
+            }
+
+            // Todo correcto
+            return true;
         }
 
-        // Si la fecha final es anterior a la de inicio, cuidado, error de lógica
-        if (endDate.Date < startDate.Date)
+        // Método que valida si la fecha de siguiente ejecucion es correcta
+        public static bool IsNextExecTimeOK(DateTimeOffset nextDateTime)
         {
-            errorMessage = "End date must be after start date";
-            return false;
+            //Lógica de validacion DateTime
+            return nextDateTime > DateTimeOffset.Now;
         }
-
-        // Si las fechas coinciden, solo es válido si se trata de una única ejecución (Once)
-        if (startDate.Date == endDate.Date && type == ScheduleType.Recurring)
-        {
-            errorMessage = "If Start and End are in the same day, select once type not recurring";
-            return false;
-        }
-
-        // Todo correcto
-        return true;
     }
-
-    // Método que valida si la fecha es correcta
-    public static bool IsDateTimeOK(DateTime dateTime)
-    {
-        //Lógica de validacion DateTime
-        return dateTime > DateTime.Now;
-    }
-
-
 }

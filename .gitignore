@@ -35,3 +35,5 @@ TestResults/
 *.swp
 *.bak
 *.tmp
+
+.fake
